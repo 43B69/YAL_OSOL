@@ -8,9 +8,10 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
 def main():
-    db_session.global_init("db/books.db")
+    db_session.global_init("db/main.db")
     app.register_blueprint(BOOKS_BLUEPRINT_GET_USING_ID)
     app.register_blueprint(BOOKS_BLUEPRINT_GET_ALL)
+    app.register_blueprint(BOOKS_BLUEPRINT_FILTER)
     app.run()
 
 

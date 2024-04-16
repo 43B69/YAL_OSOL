@@ -37,3 +37,24 @@ class BOOK(SqlAlchemyBase):
     CREATE_DATE = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
     # Рейтинг. Ставится по мнению админа.
     # SCORE = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
+
+class API(SqlAlchemyBase):
+    __tablename__ = 'API'
+
+    # Уникальный номер токена. Создаётся автоматически. Неизменяем.
+    ID = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    # Сам ключ-токен. Рандомный набор символов
+    TOKEN = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    # Поле, в случае, если ключ деактивирован
+    DEACTIVATE = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
+    '''Дальше происходит получение прав'''
+    # Возможность работать с фильтром
+    RULE_WORK_WITH_FILTER = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
+    # Возможность проводить поиск по описанию/названию
+    RULE_FIND_DATA_BY_STRING = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
+    # Возможность получить JSON со всеми книгами
+    RULE_GET_ALL_BOOKS = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
+    # Разрешение на работу с базой книг (создание/удаление/...)
+    RULE_WORK_WITH_BASE = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
+
+
