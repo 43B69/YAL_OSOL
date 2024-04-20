@@ -22,7 +22,7 @@ class BOOK(SqlAlchemyBase):
     # Дата выхода. Если нет - пропускаем. База самостоятельно заменит на "Неизвестно".
     OUT_DATE = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     # Страна выпуска. В теории должно быть, но если нет - пропускаем. Базой меняется на "Мир".
-    OUT_COUNTRY = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    OUT_COUNTRY = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     # Жанры. Хотя бы один жанр нужно добавить. Количество не ограничено.
     GENRES = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     # Имя файла. Одинаково для всех типов. Уникально. Записывает транслитом "{BOOK_NAME}-{AUTHOR}-{HASH[:10]}".
@@ -37,6 +37,7 @@ class BOOK(SqlAlchemyBase):
     CREATE_DATE = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
     # Рейтинг. Ставится по мнению админа.
     # SCORE = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
+
 
 class API(SqlAlchemyBase):
     __tablename__ = 'API'
@@ -56,5 +57,3 @@ class API(SqlAlchemyBase):
     RULE_GET_ALL_BOOKS = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
     # Разрешение на работу с базой книг (создание/удаление/...)
     RULE_WORK_WITH_BASE = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
-
-
