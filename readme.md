@@ -20,13 +20,11 @@
     * **AUTHOR** - имя автора (_STRING_);
     * **PUBLISHER** - издательство (_STRING_);
     * **DESCRIPTION** - описание (_STRING_);
-    * **OUT_DATE** - дата выхода (_STRING_);
     * **OUT_COUNTRY** - страна автора/издания (_STRING_);
     * **GENRES** - жанры (_ARRAY OF STRING_);
     * **FILE_NAME** - название файла (_STRING_);
     * **CODECS** - доступные типы файлов (_ARRAY OF STRING_);
     * **CODECS_HASH** - контрольные суммы файлов (_ARRAY OF STRING_);
-    * **DOWNLOADS** - количество скачиваний (_INTEGER_);
     * **CREATE_DATE** - дата добавления в базу (_DATE_).
 - **Реализация таблицы API-токенов _main.db/API_**
     * **ID** - Уникальный номер токена (_INTEGER_);

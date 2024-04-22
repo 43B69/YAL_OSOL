@@ -16,9 +16,9 @@ with open("db/country.csv", "r", encoding="UTF-8") as f:
 def formatter(inp_data):
     res = {}
     for i in inp_data:
-        res[int(i.ID)] = [i.BOOK_NAME, i.BOOK_ALTER_NAME, i.AUTHOR, i.PUBLISHER, i.DESCRIPTION, i.OUT_DATE,
+        res[int(i.ID)] = [i.BOOK_NAME, i.AUTHOR, i.PUBLISHER, i.DESCRIPTION,
                           i.OUT_COUNTRY, [int(j) for j in i.GENRES.split(";")[1:-1]], i.FILE_NAME,
-                          i.CODECS, i.CODECS_HASH, i.DOWNLOADS]
+                          i.CODECS, i.CODECS_HASH]
     return res
 
 
@@ -28,10 +28,10 @@ def book_api_id(book_id):
     query_book = db_sess.query(BOOK).filter(BOOK.ID == book_id).first()
     if not query_book:
         return make_response(jsonify({"error": "not found"}), 404)
-    return jsonify({int(query_book.ID): [query_book.BOOK_NAME, query_book.BOOK_ALTER_NAME, query_book.AUTHOR,
-                                         query_book.PUBLISHER, query_book.DESCRIPTION, query_book.OUT_DATE,
+    return jsonify({int(query_book.ID): [query_book.BOOK_NAME, query_book.AUTHOR,
+                                         query_book.PUBLISHER, query_book.DESCRIPTION,
                                          query_book.OUT_COUNTRY, query_book.GENRES, query_book.FILE_NAME,
-                                         query_book.CODECS, query_book.CODECS_HASH, query_book.DOWNLOADS,
+                                         query_book.CODECS, query_book.CODECS_HASH,
                                          query_book.CREATE_DATE]})
 
 
@@ -43,8 +43,8 @@ def book_api_all():
         return make_response(jsonify({"error": "not found"}), 404)
     res = {}
     for i in query_all_books:
-        res[int(i.ID)] = [i.BOOK_NAME, i.BOOK_ALTER_NAME, i.AUTHOR, i.PUBLISHER, i.DESCRIPTION, i.OUT_DATE,
-                          i.OUT_COUNTRY, i.GENRES, i.FILE_NAME, i.CODECS, i.CODECS_HASH, i.DOWNLOADS, i.CREATE_DATE]
+        res[int(i.ID)] = [i.BOOK_NAME, i.AUTHOR, i.PUBLISHER, i.DESCRIPTION,
+                          i.OUT_COUNTRY, i.GENRES, i.FILE_NAME, i.CODECS, i.CODECS_HASH, i.CREATE_DATE]
     return jsonify(res)
 
 
@@ -95,6 +95,6 @@ def book_api_filter():
     data = query_all_books.all()
     res = {}
     for i in data:
-        res[int(i.ID)] = [i.BOOK_NAME, i.BOOK_ALTER_NAME, i.AUTHOR, i.PUBLISHER, i.DESCRIPTION, i.OUT_DATE,
-                          i.OUT_COUNTRY, i.GENRES, i.FILE_NAME, i.CODECS, i.CODECS_HASH, i.DOWNLOADS, i.CREATE_DATE]
+        res[int(i.ID)] = [i.BOOK_NAME, i.AUTHOR, i.PUBLISHER, i.DESCRIPTION,
+                          i.OUT_COUNTRY, i.GENRES, i.FILE_NAME, i.CODECS, i.CODECS_HASH, i.CREATE_DATE]
     return jsonify(res)
