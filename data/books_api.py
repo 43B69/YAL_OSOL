@@ -5,8 +5,9 @@ from .books import BOOK
 
 API_GET_BOOK_ON_ID = flask.Blueprint("API_ID", __name__)
 API_GET_ALL_BOOKS = flask.Blueprint("API_ALL", __name__)
-BOOKS_BLUEPRINT_FILTER = flask.Blueprint("BOOK_api_filter", __name__)
-FILTER_NAMES = ["find", "name", "description", "author", "publisher", "genres", "codecs", "country"]
+BOOKS_BLUEPRINT_FILTER = flask.Blueprint("API_FILTER", __name__)
+BOOKS_BLUEPRINT_ADD = flask.Blueprint("API_ADD", __name__)
+FILTER_NAMES = ["ID", "find", "name", "description", "author", "publisher", "genres", "codecs", "country", "file_name"]
 COUNTRIES = {}
 with open("db/country.csv", "r", encoding="UTF-8") as f:
     buff = f.readline().split(";")
@@ -48,6 +49,29 @@ def book_api_all():
     return jsonify(res)
 
 
+@BOOKS_BLUEPRINT_ADD.route("/api/add", methods=["POST"])
+def book_add():
+    args = request.args.to_dict()
+    right_args = {i: args[i] for i in args if i in FILTER_NAMES}
+    db_sess = db_session.create_session()
+    query_all_books = db_sess.query(BOOK)
+    input_b = BOOK()
+    input_b.BOOK_NAME = right_args["name"]
+    input_b.AUTHOR = right_args["author"]
+    input_b.DESCRIPTION = right_args["description"]
+    input_b.CODECS = right_args["codecs"]
+    input_b.OUT_COUNTRY = int(right_args["country"])
+    input_b.GENRES = right_args["genres"]
+    input_b.FILE_NAME = right_args["file_name"]
+    db_sess.add(input_b)
+    db_sess.commit()
+    return jsonify({int(input_b.ID): [input_b.BOOK_NAME, input_b.AUTHOR,
+                                         input_b.PUBLISHER, input_b.DESCRIPTION,
+                                         input_b.OUT_COUNTRY, input_b.GENRES, input_b.FILE_NAME,
+                                         input_b.CODECS, input_b.CODECS_HASH,
+                                         input_b.CREATE_DATE]})
+
+
 @BOOKS_BLUEPRINT_FILTER.route("/api/filter", methods=["GET"])
 def book_api_filter():
     args = request.args.to_dict()
@@ -59,13 +83,13 @@ def book_api_filter():
     query_all_books = db_sess.query(BOOK)
     if "find" in right_args and right_args["find"] != "":
         if "name" in right_args and right_args["name"] == "1":
-            query_all_books = query_all_books.filter(BOOK.BOOK_NAME.like(f"%{right_args["find"]}%"))
+            query_all_books = query_all_books.filter(BOOK.BOOK_NAME.like(f"%{right_args['find']}%"))
         if "description" in right_args and right_args["description"] == "1":
-            query_all_books = query_all_books.filter(BOOK.DESCRIPTION.like(f"%{right_args["find"]}%"))
+            query_all_books = query_all_books.filter(BOOK.DESCRIPTION.like(f"%{right_args['find']}%"))
         if "author" in right_args and right_args["author"] == "1":
-            query_all_books = query_all_books.filter(BOOK.AUTHOR.like(f"%{right_args["find"]}%"))
+            query_all_books = query_all_books.filter(BOOK.AUTHOR.like(f"%{right_args['find']}%"))
         if "publisher" in right_args and right_args["publisher"] == "1":
-            query_all_books = query_all_books.filter(BOOK.PUBLISHER.like(f"%{right_args["find"]}%"))
+            query_all_books = query_all_books.filter(BOOK.PUBLISHER.like(f"%{right_args['find']}%"))
     if "genres" in right_args and right_args["genres"] != "":
         buff = right_args["genres"].split(";")
         genres = []
