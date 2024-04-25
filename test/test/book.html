@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" style="position: static;display: inline-block;overflow: visible;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap">
+</head>
+
+<body style="position: relative;background: var(--bs-white);">
+    <div class="container py-4 py-xl-5">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6">
+                <div class="p-xl-5 m-xl-5" style="color: var(--bs-btn-disabled-color);background: #ffffff;"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="img.png"></div>
+            </div>
+            <div class="col-md-6 d-md-flex align-items-md-center">
+                <div style="color: rgb(0,0,0);">
+                    <p style="color: rgb(0,0,0);font-size: 46px;font-weight: bold;font-family: 'Roboto Flex', sans-serif;">{{ book_name }}</p>
+                    <p style="color: rgb(0,0,0);font-family: 'Roboto Flex', sans-serif;font-size: 34px;">- {{ author }}</p>
+                    <p style="color: rgb(0,0,0);font-size: 34px;font-family: 'Roboto Flex', sans-serif;">- {{ genres }}</p>
+                    <div class="table-responsive" style="font-size: 26px;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Формат файла</th>
+                                    <th>Ссылка</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ format_name_1 }}</td>
+                                    <td><a href="#">Скачать</a></td>
+                                </tr>
+                                <tr>
+                                    <td>{{ format_name_2 }}</td>
+                                    <td><a href="#">Скачать</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<style>
+	h1{color:#fff;font-family:Lato,sans-serif;text-transform:uppercase;margin:0 0 25px;font-size:56px}p{color:#fff;font-family:Lato,sans-serif;font-weight:100;max-width:1024px;margin:0 auto}.header-cell .fa.fa-truck{margin-right:15px}.top-header-container{display:table;width:100%;height:600px;background-color:rgba(0,0,0,.5)}.header-cell{display:table-cell;width:100%;height:100%;vertical-align:middle}.container-fluid.main-header-text{padding:0;margin:0;min-height:600px;display:block;position:relative;background-image:url(https://images.unsplash.com/photo-1499343162160-cd1441923dd3);background-size:cover;background-position:center center;text-align:center}.nav-main-wrapper{text-align:center;box-shadow:none;border:none;border-radius:0;margin-bottom:0;background:rgba(0,0,0,.85);display:block;position:absolute;left:0;right:0;bottom:0}.nav-main-wrapper .navbar-brand{color:#fff;box-shadow:none;text-transform:uppercase;font-size:16px}.nav-main-wrapper .navbar-brand:hover{color:#fff;box-shadow:none;opacity:.8}.nav-main-wrapper ul{float:none}.nav-main-wrapper li{float:none;display:inline-block}.nav-main-wrapper .navbar-nav>li>a{text-shadow:none;background:0 0;text-transform:uppercase;font-size:12px;color:#9c9c9c}.nav-main-wrapper .navbar-nav>.active>a,.nav-main-wrapper .navbar-nav>.active>a:hover,.nav-main-wrapper .navbar-nav>.open>a,.nav-main-wrapper .navbar-nav>.open>a:hover,.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover{color:#fff;background-color:transparent;background-image:none;box-shadow:none}.nav-main-wrapper .navbar-nav>.active>a:after,.nav-main-wrapper .navbar-nav>.open>a:after{opacity:1;bottom:10px}.nav-main-wrapper li a:active,.nav-main-wrapper li a:focus,.nav-main-wrapper li a:hover,.nav-main-wrapper li.active{background-color:transparent;background-image:none;-webkit-transition:320ms;-moz-transition:320ms;-ms-transition:all 320ms ease;-o-transition:320ms;transition:320ms}.nav-main-wrapper li a:after{content:'';position:absolute;display:block;left:15px;right:15px;bottom:0;height:2px;background:#fff;opacity:0}.nav-main-wrapper .navbar-toggle{border:none;color:#fff}.nav-main-wrapper .navbar-toggle .icon-bar{opacity:1;background-color:#fff}.nav-main-wrapper .navbar-toggle:hover .icon-bar{opacity:.8}.nav-main-wrapper .navbar-toggle:focus,.nav-main-wrapper .navbar-toggle:hover{background-color:transparent}@media (max-width:767px){h1{font-size:30px}p{font-size:14px;margin:0 25px}.nav-main-wrapper li a:after{opacity:0;display:none}.nav-main-wrapper li{float:none;display:block;text-align:left}}.bs-icon{--bs-icon-size:.75rem;display:flex;flex-shrink:0;justify-content:center;align-items:center;font-size:var(--bs-icon-size);width:calc(var(--bs-icon-size) * 2);height:calc(var(--bs-icon-size) * 2);color:var(--bs-primary)}.bs-icon-xs{--bs-icon-size:1rem;width:calc(var(--bs-icon-size) * 1.5);height:calc(var(--bs-icon-size) * 1.5)}.bs-icon-sm{--bs-icon-size:1rem}.bs-icon-md{--bs-icon-size:1.5rem}.bs-icon-lg{--bs-icon-size:2rem}.bs-icon-xl{--bs-icon-size:2.5rem}.bs-icon.bs-icon-primary{color:var(--bs-white);background:var(--bs-primary)}.bs-icon.bs-icon-primary-light{color:var(--bs-primary);background:rgba(var(--bs-primary-rgb),.2)}.bs-icon.bs-icon-semi-white{color:var(--bs-primary);background:rgba(255,255,255,.5)}.bs-icon.bs-icon-rounded{border-radius:.5rem}.bs-icon.bs-icon-circle{border-radius:50%}.fit-cover{object-fit:cover}
+</style>
