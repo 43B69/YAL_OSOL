@@ -14,12 +14,10 @@ with open("db/country.csv", "r", encoding="UTF-8") as f:
     COUNTRIES[int(buff[0])] = [buff[1], buff[2]]
 
 
-def formatter(inp_data):
-    res = {}
-    for i in inp_data:
-        res[int(i.ID)] = [i.BOOK_NAME, i.AUTHOR, i.PUBLISHER, i.DESCRIPTION,
-                          i.OUT_COUNTRY, [int(j) for j in i.GENRES.split(";")[1:-1]], i.FILE_NAME,
-                          i.CODECS, i.CODECS_HASH]
+def formatter(i):
+    res = [i.BOOK_NAME, i.AUTHOR, i.PUBLISHER, i.DESCRIPTION,
+           i.OUT_COUNTRY, [int(j) for j in i.GENRES.split(";")[1:-1]], i.FILE_NAME,
+           [int(j) for j in i.CODECS.split(";")[1:-1]], i.CODECS_HASH]
     return res
 
 
@@ -29,11 +27,7 @@ def book_api_id(book_id):
     query_book = db_sess.query(BOOK).filter(BOOK.ID == book_id).first()
     if not query_book:
         return make_response(jsonify({"error": "not found"}), 404)
-    return jsonify({int(query_book.ID): [query_book.BOOK_NAME, query_book.AUTHOR,
-                                         query_book.PUBLISHER, query_book.DESCRIPTION,
-                                         query_book.OUT_COUNTRY, query_book.GENRES, query_book.FILE_NAME,
-                                         query_book.CODECS, query_book.CODECS_HASH,
-                                         query_book.CREATE_DATE]})
+    return formatter(query_book)
 
 
 @API_GET_ALL_BOOKS.route("/api/books/all", methods=["GET"])
