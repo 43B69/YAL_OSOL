@@ -13,13 +13,14 @@
     <div class="container py-4 py-xl-5">
         <div class="row gy-4 gy-md-0">
             <div class="col-md-6">
-                <div class="p-xl-5 m-xl-5" style="color: var(--bs-btn-disabled-color);background: #ffffff;"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="{{ static_img }}"></div>
+                <div class="p-xl-5 m-xl-5" style="color: var(--bs-btn-disabled-color);background: #ffffff;"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px; height:100%; width: 100%;" src="{{ SUDA_FILE_PON }}"></div>
             </div>
             <div class="col-md-6 d-md-flex align-items-md-center">
                 <div style="color: rgb(0,0,0);">
                     <p style="color: rgb(0,0,0);font-size: 46px;font-weight: bold;font-family: 'Roboto Flex', sans-serif;">{{ book_name }}</p>
                     <p style="color: rgb(0,0,0);font-family: 'Roboto Flex', sans-serif;font-size: 34px;">- {{ author }}</p>
                     <p style="color: rgb(0,0,0);font-size: 34px;font-family: 'Roboto Flex', sans-serif;">- {{ genres }}</p>
+                    <!--
                     <div class="table-responsive" style="font-size: 26px;">
                         <table class="table">
                             <thead>
@@ -29,6 +30,8 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {{ VOT_SUDA_NADA__MNOGA_CODECS }}
+
                                 <tr>
                                     <td>{{ format_name_1 }}</td>
                                     <td><a href="#">Скачать</a></td>
@@ -39,7 +42,8 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
+                    <p style="color: rgb(0,0,0);font-size: 34px;font-family: 'Roboto Flex', sans-serif;"><a href="{{ AAAAAAA_PUSTITE_MENIA_V_INTERNET }}">СКАЧАТЬ</a></p>
                 </div>
             </div>
         </div>

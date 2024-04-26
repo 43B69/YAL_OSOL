@@ -93,7 +93,6 @@ def book_api_filter():
             except ValueError:
                 return make_response(jsonify({"error": "The genre number is a string"}), 400)
             genres.append(int(buff[i]))
-        print(genres)
         for i in genres:
             query_all_books = query_all_books.filter(BOOK.GENRES.like(f"%;{i};%"))
     if "codecs" in right_args and right_args["codecs"] != "":
@@ -105,7 +104,6 @@ def book_api_filter():
             except ValueError:
                 return make_response(jsonify({"error": "The genre number is a string"}), 400)
             codecs.append(int(buff[i]))
-        print(codecs)
         for i in codecs:
             query_all_books = query_all_books.filter(BOOK.CODECS.like(f"%;{i};%"))
     if "country" in right_args and right_args["country"] != "":
